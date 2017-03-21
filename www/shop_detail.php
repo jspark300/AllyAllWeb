@@ -310,6 +310,7 @@ $(document).ready(function(){
 						<p><span class="tit"><?=$give[name]?></span> <span>(<?=number_format($give[price])?>원)</span></p>
 						<p>- 응모기간 : <strong><?=substr($give[start_date],0,4).".".substr($give[start_date],4,2).".".substr($give[start_date],6,2)?>~<?=substr($give[end_date],0,4).".".substr($give[end_date],4,2).".".substr($give[end_date],6,2)?></strong></p>
 						<p>- 현재 응모자수 : <strong><?=$g_count?></strong> (전체 : <?=$total_enter?>)</p>
+						<p>- <strong><?=$give[description]?></strong></p>
 						
 							<p class="btn"><a href="shop_entry.php?id=<?=$id?>&c1=<?=$c1?>&give_id=<?=$give[id]?>">응모하기</a></p>
 						
