@@ -379,7 +379,7 @@ else
 				
 			</ul>
 			<ul class="fr">
-				<?if(G5_IS_MOBILE) { ?><li><a href="javascript:;"  id="kakao-link-btn"><img src="images/btn_sns_kt.png" alt="kakao talk"></a></li><?}?>
+				<?if(G5_IS_MOBILE) { ?><li><a href="javascript:sendLink();"  id="kakao-link-btn"><img src="images/btn_sns_kt.png" alt="kakao talk"></a></li><?}?>
 				<li><a href="javascript:shareStory();"><img src="images/btn_sns_ks.png" alt="kakao story"></a></li>
 				<li><a href="javascript:facebook_share();"  target="_blank"><img src="images/btn_sns_fb.png" alt="facebook"></a></li>
 				<li><a href="https://twitter.com/intent/tweet?text=ALLYALL&url=http://allyall.co.kr/shop_detail.php?id=<?=$id?>"><img src="images/btn_sns_tw.png" alt="twitter"  target="_blank"></a></li>
@@ -475,7 +475,7 @@ $rx = sql_fetch($sql);
     Kakao.init('5302c4e28247afd06c32933f7f744af4');
 
     // 카카오톡 링크 버튼을 생성합니다. 처음 한번만 호출하면 됩니다.
-    Kakao.Link.createTalkLinkButton({
+  /*  Kakao.Link.createTalkLinkButton({
       container: '#kakao-link-btn',
       label: '<?=$res[name]?>',
       image: {
@@ -487,7 +487,21 @@ $rx = sql_fetch($sql);
         text: '올이올 세상의 모든 동맹 ;)',
         url: 'http://allyall.co.kr/shop_detail.php?id=<?=$id?>' // 앱 설정의 웹 플랫폼에 등록한 도메인의 URL이어야 합니다.
       }
-    });
+    }); */
+	function sendLink() {
+        Kakao.Link.sendTalkLink({
+            label: '<?=$res[name]?>',
+            webLink: {
+                text: '올이올 세상의 모든 동맹 ;)',
+                url: 'http://allyall.co.kr/shop_detail.php?id=<?=$id?>'
+            },
+            image: { // 80 * 80 이상
+                src: '<?="http://allyall.co.kr/data/shop/".$res[img_id]."/".$res[img1]?>',
+                width: '400',
+                height: '300'
+            }
+        });
+    }
 	 function shareStory() {
         Kakao.Story.share({
 			url: 'http://allyall.co.kr/shop_detail.php?id=<?=$id?>',
