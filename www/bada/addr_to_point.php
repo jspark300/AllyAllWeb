@@ -9,7 +9,7 @@ if($sido==""  || $gugun=="" || $dong=="" || $bungi == "")
 }
 else
 {
-	//echo "※ 위치가 잘못된 경우는 입력된 주소를 확인해주세요.";
+/*	//echo "※ 위치가 잘못된 경우는 입력된 주소를 확인해주세요.";
 	$query = urlencode($sido.$gugun.$dong.$bungi);
 	$url = "http://openapi.map.naver.com/api/geocode?key=4656599e5f320c8f90d2a7454368cfea&encoding=utf-8&coord=latlng&output=xml&query=".$query;
 //	echo $url;
@@ -28,6 +28,26 @@ else
 
 	$x = $xml->result->items->item->point->x;
 	$y = $xml->result->items->item->point->y;
+	*/
+	$query = urlencode($sido."+".$gugun."+".$dong."+".$bungi);
+	$url = "https://maps.googleapis.com/maps/api/geocode/xml?address=".$query."&key=AIzaSyB4onIcRm0jLPEpnmAJ3feIsLGqxQVe5Tc";
+//	echo $url;
+    $curl = curl_init();
+    curl_setopt($curl, CURLOPT_URL, $url);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($curl, CURLOPT_HEADER, false);
+
+    // execute and return string (this should be an empty string '')
+    $str = curl_exec($curl);
+
+    curl_close($curl);
+	$xml = simplexml_load_string($str);
+
+	//$total_count = $xml->result->total;
+
+	$y = $xml->result->geometry->location->lat;
+	$x = $xml->result->geometry->location->lng;
+
 }
 
 function search_com($sido,$gugun,$dong,$bungi,$x,$y)

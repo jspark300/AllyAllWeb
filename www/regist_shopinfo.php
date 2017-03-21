@@ -22,7 +22,7 @@ $res = sql_fetch($sql);
 	<link href="a_css/common.css" rel="stylesheet" />
 	<script src="a_js/jquery-1.11.3.min.js"></script>
 	<script src="a_js/common.js"></script>
-		<script type="text/javascript" src="http://openapi.map.naver.com/openapi/naverMap.naver?ver=2.0&key=4656599e5f320c8f90d2a7454368cfea"></script>
+	<script type="text/javascript" src="http://openapi.map.naver.com/openapi/v2/maps.js?clientId=aMPHBUqfwYGmV4FJeIt7"></script>
 
 <script type="text/javascript">
 
@@ -425,12 +425,12 @@ $str3 .= "";
 									minMaxLevel : [1,14]
 										//,				size : new nhn.api.map.Size(340,280)
 									});
-								var oSlider = new nhn.api.map.ZoomControl();
-								oMap.addControl(oSlider);
-								oSlider.setPosition({
-									top : 10,
-									left : 10
-								});
+//								var oSlider = new nhn.api.map.ZoomControl();
+//								oMap.addControl(oSlider);
+//								oSlider.setPosition({
+//									top : 10,
+//									left : 10
+//								});
 
 								var oMapTypeBtn = new nhn.api.map.MapTypeBtn();
 								oMap.addControl(oMapTypeBtn);
